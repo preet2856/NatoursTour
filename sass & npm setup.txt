@@ -1,0 +1,58 @@
+Enter in local disk d : D:
+Enter in folder : cd foldername
+Exit folder : cd..
+show the all folder : ls
+making new file : mkdir
+
+
+<------------------ node moodules ------------------>
+
+npm init 
+
+
+<------------------ install sass in the folder ------------------>
+
+npm install -g sass
+
+
+<------------------ dependencies in package.json ------------------>
+
+npm install node-sass --save-dev
+npm install concat --save-dev
+npm install autoprefixer --save-dev
+npm install npm-run-all --save-dev
+npm install postcss-cli --save-dev
+
+
+<------------------ for run the code through live-server ------------------>
+
+npm run start
+
+
+<------------------ this is last .json file after add all settings ------------------>
+
+{
+  "name": "trillo",
+  "version": "1.0.0",
+  "description": "landing page for trillo",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "devserver": "live-server",
+    "start": "npm-run-all --parallel devserver watch:sass",
+    
+    "compile:sass": "node-sass sass/main.scss css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.comp.css -o css/style.prefix.css",
+    "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css"
+  },
+  "author": "preet",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "concat": "^1.0.3",
+    "node-sass": "^8.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^10.0.0"
+  }
+}
